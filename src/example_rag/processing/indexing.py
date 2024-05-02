@@ -38,7 +38,7 @@ def index(parsed_data_dir: str, db_host: str = ChromaConfig.host, db_port: int =
         chunk_overlap=ProcessingConfig.chunk_overlap,
     )
 
-    nodes = splitter.get_nodes_from_documents(documents)[:10]  # [:20]
+    nodes = splitter.get_nodes_from_documents(documents)
 
     lt_en_translator = Translator('lt-en')
 
