@@ -17,3 +17,27 @@ Afterwards, run the following command to start the application:
 ```bash
 sudo docker compose up
 ```
+
+## Improving performance
+
+To improve the perfomance of RAG, there are a couple of parameters that can be tuned in settings.py:
+
+Prompts:
+- `SYSTEM_PROMPT`: System prompt used for RAG, could be improved by experimenting with different prompts.
+- `CONTEXT_PROMPT`: Context prompt used for RAG, could be improved by experimenting with different prompts.
+
+Generation settings:
+- `GenerationSettings.temperature`: Temperature parameter for RAG, controls how creative the model is.
+- `GenerationSettings.top_p`: Controls how diverse models vocabulary is.
+- `GenerationSettings.similiarity_top_k`: Controls how many nodes to retrieve for context.
+
+Processing settings:
+- `ProcessingSettings.chunk_size`: Controls how large the chunks can be for retrieval.
+- `ProcessingSettings.chunk_overlap`: Controls how much overlap there is between chunks.
+
+## Roadmap for improvements
+
+Aside from tuning parameters, model performance can be improved by:
+- Increasing translation performance, currently using base model from Opus-MT, however it could be finetuned for fiction(or other) domain, using relevant data.
+- Using a more powerful model, for example using quantized variant of LLama-3-70B model (GGUF or GPTQ).Implementation only requires defining `BaseChatModel` from `src/example_rag/chatbot/model.py`.
+- Using longer context for retrieval, currently using 512 tokens, however it could be increased to 2048 tokens if used 'long' variant of the model, however it would require to refactor in such a way so translation happens not on node level, but on document level.
