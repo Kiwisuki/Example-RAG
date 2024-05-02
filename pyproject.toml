@@ -1,0 +1,96 @@
+[tool.poetry]
+name = "example-rag"
+version = "0.1.0"
+description = "Example RAG application"
+authors = ["Marius Arlauskas"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "~3.11"
+transformers = "^4.40.1"
+llama-index = "^0.10.32"
+llama-index-vector-stores-chroma = "^0.1.6"
+streamlit = "^1.33.0"
+accelerate = "^0.29.3"
+torch = "^2.3.0"
+scipy = "^1.13.0"
+ebooklib = "^0.18"
+html2text = "^2024.2.26"
+sentencepiece = "^0.2.0"
+sacremoses = "^0.1.1"
+
+
+[tool.poetry.group.linting.dependencies]
+ruff = '^0.0.285'
+isort = '^5.12.0'
+black = '^23.7.0'
+
+
+
+[tool.poetry.group.evaluation.dependencies]
+ragas = "^0.1.7"
+ipykernel = "^6.29.4"
+ipywidgets = "^8.1.2"
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Read more: 'https://beta.ruff.rs/docs/rules/'
+ignore = ['D104', 'D100', 'D103', 'G004', 'N999', 'I001', 'N806', 'COM812', 'ERA001', 'N803', 'D210', 'D211', 'D213']
+select = [
+    'B',   # flake8-bugbear
+    'C4',  # flake8-comprehensions
+    'ERA', # flake8-eradicate/eradicate
+    'PIE', # flake8-pie
+    'SIM', # flake8-simplify
+    'TCH', # flake8-type-checking
+    'TID', # flake8-tidy-imports
+    'PTH', # flake8-use-pathlib
+    'ARG', # flake8-unused-arguments
+    'Q', # flake8-quotes
+    'PT', # flake8-pytest-style
+    'T20', # flake8-print
+    'G', # flake8-logging-format
+    'ICN', # flake8-import-conventions
+    'COM', # flake8-commas
+    'A', # flake8-builtins
+    'D', # pydocstyle
+    'I',   # isort
+    'N',   # pep8-naming
+    'RUF', # ruff checks
+    'FLY', # flynt
+    'PD', # pandas-vet
+]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    '.git',
+    '.gitlab',
+    '.mypy_cache',
+    '.pytype',
+    '.ruff_cache',
+    '.venv',
+    '__pypackages__',
+    'venv',
+]
+
+line-length = 88 # Same as Black
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = 'double'
+inline-quotes = 'single'
+multiline-quotes = 'single'
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.isort] # Making isort compatible with black
+profile = 'black'
+multi_line_output = 3
+line_length = 88
+include_trailing_comma = true

@@ -1,0 +1,40 @@
+services:
+
+  chroma:
+    image: chromadb/chroma
+    ports:
+      - "8000:8000"
+    networks:
+      - net
+    volumes:
+      - ./src/example_rag/data/db_data/:/chroma/chroma
+    environment:
+      - PYTHONBUFFERED=1
+
+  rag-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    networks:
+      - net
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            capabilities: [gpu]
+    volumes:
+      - ./src/example_rag/data:/app/src/example_rag/data
+      - ./cache:/app/cache
+    depends_on:
+      - chroma
+    environment:
+      - PYTHONBUFFERED=1
+
+networks:
+  net:
+    driver: bridge

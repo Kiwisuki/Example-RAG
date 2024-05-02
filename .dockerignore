@@ -1,0 +1,25 @@
+# Ignore common Python and development files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore editor specific files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore environment files
+.env
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore virtual environment
+.venv/
