@@ -2,6 +2,11 @@
 
 An example RAG application for the Shadow of Altars book written by the author, Vincas Mykolaitis-Putinas.
 
+## Restrictions
+
+I had specific restriction for this project:
+- Document data must be processed only internally, no external services can be used.
+
 ## Prerequisites
 
 - Python ~3.11, get it from [here](https://www.python.org/downloads/). (For local development)
