@@ -12,6 +12,9 @@ An example RAG application for the Shadow of Altars book written by the author, 
 
 ## Running the application
 
+Firstly, after cloning the repository,  
+copy the `.env.tmpl` file to `.env` and fill in the necessary environment variables.
+Afterwards, run the following command to start the application:
 ```bash
 sudo docker compose up
 ```
