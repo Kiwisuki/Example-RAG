@@ -46,3 +46,8 @@ Aside from tuning parameters, model performance can be improved by:
 - Increasing translation performance, currently using base model from Opus-MT, however it could be finetuned for fiction(or other) domain, using relevant data.
 - Using a more powerful model, for example using quantized variant of LLama-3-70B model (GGUF or GPTQ).Implementation only requires defining `BaseChatModel` from `src/example_rag/chatbot/model.py`.
 - Using longer context for retrieval, currently using 512 tokens, however it could be increased to 2048 tokens if used 'long' variant of the model, however it would require to refactor in such a way so translation happens not on node level, but on document level.
+
+## Deployment
+
+You can deploy containerized application to any cloud provider that supports Docker containers, for example AWS, Azure, GCP, DigitalOcean, etc.
+However, LLM and Embedding model serving should be refactored to be capable of asynchronous processing, and should be served as separate services, as they are computationally expensive.
